@@ -28,7 +28,7 @@ public class GlobalDataQueue {
         queue.offer(dv);
 
 
-        System.out.println("[ANDT]EnQueue size(enqueue): " + queue.size() + "/10(" + LocalDateTime.now() +")\n" + dv);
+        System.out.println("[wssb]EnQueue size(enqueue): " + queue.size() + "/10(" + LocalDateTime.now() +")\n" + dv);
 
         if(queue.size() > 10) {
             System.out.println("Queue size exceeded 10, removing oldest element.");
