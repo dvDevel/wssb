@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        body { width: 100vw; height:100vh; }
+        textarea { width: calc(99%); height: 70vh; }
+
+        ul { width: 90vw; }
+        li { width: 90vw; }
+    </style>
+</head>
+<body>
+    <h1>Websocket with Spring boot</h1>
+    <ul>
+        <li><textarea id='txtLog' row="10"></textarea></li>
+    </ul>
+
+    <script>
+
+        let o = document.getElementById('txtLog');
+
+        const socket = new WebSocket("ws://localhost:8080/ws");
+        o.value = socket;
+
+        socket.onopen = () => {
+            socket.send("WS connection established");
+            o.value = 'WebSocket connection opened' + o.value;
+        }
+
+        socket.onmessage = async (event) => {
+            o.value = event.data +" / "+ o.value;
+        
+            // console.log("ws on message is " + event.data);
+        }
+
+        socket.onclose = () => {
+            o.value = 'WebSocket connection closed' + o.value;
+
+        };
+
+        socket.onerror = (error) => {
+            o.value = 'WebSocket error:' + error + o.value;
+        };
+
+    </script>
+</body>
+</html>
